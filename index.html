@@ -1,4 +1,3 @@
-
 <!-- Added in head H.E -->
 <!DOCTYPE html>
 <html lang="en">
@@ -7,34 +6,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Bulma links H.E -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
   <!-- Google Fonts H.E-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Sixtyfour&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Sixtyfour&display=swap" rel="stylesheet">
   <!-- Font Awesome for Icons H.E-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <!-- CSS stylesheet H.E-->
   <link rel="stylesheet" href="assets/css/style.css" />
   <title>CineSpin: The Reel Roulette</title>
 </head>
 
 
+<!-- Added jumbotron for header, I will add css to center and look nicer H.E -->
+
 <body>
-    <!-- Started basic header H.E -->
-    <header>
-        <h1 class="header">CineSpin: The Reel Roulette</h1>
-        <h2 class="header">Picking a Movie doesn't have to be hard!</h2>
-    </header>
-
-
-<!-- TO DO: Icon list with names of genres H.E-->
-<!-- Started very basic list and html for icons using bulma docs H.E-->
-<div class="container" id="icons">
-    <div class="notification is-primary">
-      Chose which genre you would like to watch.
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          CineSpin: The Reel Roulette
+        </h1>
+        <h2 class="subtitle">
+          Picking A Movie Doesn't Have To Be Hard!
+        </h2>
+      </div>
     </div>
+  </section>
+</body>
+
+
+
+<!-- Icon and genre list. I will add css to center and look nicer, also some icons just won't load properly. H.E -->
+<div class="container has-text-centered has-background-primary" id="icons">
+  <div class="notification is-primary">
+    Choose which genre you would like to watch.
   </div>
+  <div class="buttons">
+
+    <button class="button is-primary comedy-button">
+      <span class="icon">
+          <i class="fas fa-laugh" style="color: #030407;"></i>
+      </span>
+      <span>Comedy</span>
+  </button>
+  
+    <button class="button is-primary family-button">
+      <span class="icon">
+        <i class="fa-solid fa-people-group" style="color: #000000;"></i>
+      </span>
+      <span>Family</span>
+    </button>
+
+
+    <button class="button is-primary action-button">
+      <span class="icon">
+        <i class="fas fa-car-burst" style="color: #000000;"></i>
+      </span>
+      <span>Action</span>
+    </button>
+
+    <button class="button is-primary romantic-button">
+      <span class="icon">
+        <i class="fas fa-heart" style="color: #000000;"></i>
+      </span>
+      <span>Romantic</span>
+    </button>
+
+    <button class="button is-primary doc-button">
+      <span class="icon">
+        <i class="fa-solid fa-landmark" style="color: #020203;"></i>
+      </span>
+      <span>Documentary</span>
+  </button>
+  
+
+    <button class="button is-primary sci-button">
+      <span class="icon">
+        <i class="fas fa-user-astronaut" style="color: #000000;"></i>
+      </span>
+      <span>Sci-Fi</span>
+    </button>
+
+    <button class="button is-primary horror-button">
+      <span class="icon">
+        <i class="fas fa-surprise" style="color: #000000;"></i>
+      </span>
+      <span>Horror</span>
+    </button>
+
+
+    <button class="button is-primary musical-button">
+      <span class="icon">
+        <i class="fas fa-music" style="color: #000000;"></i>
+      </span>
+      <span>Musical</span>
+    </button>
+
+    <button class="button is-primary mystery-button">
+      <span class="icon">
+        <i class="fab fa-searchengin" style="color: #000000;"></i>
+      </span>
+      <span>Mystery</span>
+    </button>
+
+    <button class="button is-primary fantasy-button">
+      <span class="icon">
+        <i class="fas fa-hat-wizard" style="color: #000000;"></i>
+      </span>
+      <span>Fantasy</span>
+    </button>
+
+  </div>
+</div>
 
 <!-- TO DO: HTML for confirmation button -->
 
@@ -48,7 +136,8 @@
 
 
 
- 
+
 
 </body>
+
 </html>
