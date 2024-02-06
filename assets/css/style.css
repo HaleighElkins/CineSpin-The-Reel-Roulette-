@@ -1,0 +1,83 @@
+:root {
+    font-family: 'Labrada', serif;
+    font-family: 'Rozha One', serif;
+    font-family: 'Sixtyfour', sans-serif;
+    background-color: #B31312;
+    /* Fonts are not working */
+    
+}
+
+.custom-hero {
+background-color: #EEE2DE;
+align-items: center;
+}
+
+.custom-title{
+justify-content: center;
+font-size: 90px;
+}
+
+.custom-subtitle-container {
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    height: 100px;
+}
+/* still not centered under title */
+
+.custom-subtitle{
+    font-size: 50px;
+} 
+
+
+.notification.is-primary {
+    background-color: #2B2A4C;
+    color: #e9e2e2; 
+  }
+
+
+button {
+    width: 100%;
+    margin: 10px;
+}
+
+
+#icons {
+    background-color: #EA906C !important;
+    font-size: 30px;
+    padding: 10px; 
+}
+
+#icons .button i {
+    margin-right: 15px; /* Adjust the margin as needed */
+  }
+
+
+
+/* Background Color for buttons */
+#icons .comedy-button { background-color: #2B2A4C; }
+#icons .family-button { background-color: #2B2A4C; }
+#icons .action-button { background-color: #2B2A4C; }
+#icons .romantic-button { background-color: #2B2A4C;}
+#icons .doc-button { background-color: #2B2A4C; }
+#icons .sci-button { background-color: #2B2A4C; }
+#icons .horror-button { background-color: #2B2A4C; }
+#icons .musical-button { background-color: #2B2A4C; }
+#icons .mystery-button { background-color: #2B2A4C; }
+#icons .fantasy-button { background-color: #2B2A4C; }
+
+
+  /* These are for the google icons that needed to be a different color. H.E */
+  .family-button i.material-symbols-outlined {
+    color: #ffffff; 
+  }
+
+
+  .action-button i.material-symbols-outlined {
+    color:#000000;
+  }
+
+  
+  .doc-button i.material-symbols-outlined {
+    color:#000000;
+  }
