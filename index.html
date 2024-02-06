@@ -12,10 +12,14 @@
   <!-- Google Fonts H.E-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Sixtyfour&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Labrada&family=Rozha+One&family=Sixtyfour&display=swap"
+    rel="stylesheet">
   <!-- Font Awesome for Icons H.E-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <!-- Googlefonts for extra icons H.E  -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- CSS stylesheet H.E-->
   <link rel="stylesheet" href="assets/css/style.css" />
   <title>CineSpin: The Reel Roulette</title>
@@ -25,109 +29,87 @@
 <!-- Added jumbotron for header, I will add css to center and look nicer H.E -->
 
 <body>
-  <section class="hero is-primary is-bold">
+  <section class="hero custom-hero is-bold">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">
+        <h1 class="title custom-title">
           CineSpin: The Reel Roulette
         </h1>
-        <h2 class="subtitle">
+        <!-- Added in contianer H.E -->
+        <div class="custom-subtitle-container">
+        <h2 class="subtitle custom-subtitle">
           Picking A Movie Doesn't Have To Be Hard!
         </h2>
+      </div>
       </div>
     </div>
   </section>
 </body>
 
 
-
 <!-- Icon and genre list. I will add css to center and look nicer, also some icons just won't load properly. H.E -->
 <!-- added id's to each button for eventlistener W.K. -->
+
 <div class="container has-text-centered has-background-primary" id="icons">
   <div class="notification is-primary">
     Choose which genre you would like to watch.
   </div>
-
   <div class="buttons">
 
     <!-- had to remove the span classes to make event delegation work W.K. -->
     <button id="comedy" class="button is-primary comedy-button">
-      <!-- <span class="icon"> -->
-          <i class="fas fa-laugh" style="color: #030407;"></i>
-      <!-- </span> -->
-      <!-- <span>Comedy</span> -->
+      <i class="fas fa-laugh" style="color: #030407;"></i>
       Comedy
     </button>
-  
+
     <button id="family" class="button is-primary family-button">
-      <!-- <span class="icon"> -->
-        <i class="fa-solid fa-people-group" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Family</span> -->
+      <i class="material-symbols-outlined">
+        home
+      </i>
       Family
     </button>
 
     <button id="action" class="button is-primary action-button">
-      <!-- <span class="icon"> -->
-        <i class="fas fa-car-burst" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Action</span> -->
+      <i class="material-symbols-outlined">
+        minor_crash
+      </i>
       Action
     </button>
 
     <button id="romantic" class="button is-primary romantic-button">
-      <!-- <span class="icon"> -->
-        <i class="fas fa-heart" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Romantic</span> -->
+      <i class="fas fa-heart" style="color: #000000;"></i>
       Romantic
     </button>
 
     <button id="documentary" class="button is-primary doc-button">
-      <!-- <span class="icon"> -->
-        <i class="fa-solid fa-landmark" style="color: #020203;"></i>
-      <!-- </span>
-      <span>Documentary</span> -->
+      <i class="material-symbols-outlined">
+        history_edu
+      </i>
       Documentary
     </button>
-  
+
     <button id="sci-fi" class="button is-primary sci-button">
-      <!-- <span class="icon"> -->
-        <i class="fas fa-user-astronaut" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Sci-Fi</span> -->
+      <i class="fas fa-user-astronaut" style="color: #000000;"></i>
       Sci-Fi
     </button>
 
     <button id="horror" class="button is-primary horror-button">
-      <!-- <span class="icon"> -->
-        <i class="fas fa-surprise" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Horror</span> -->
+      <i class="fas fa-surprise" style="color: #000000;"></i>
       Horror
     </button>
 
     <button id="musical" class="button is-primary musical-button">
-      <!-- <span class="icon"> -->
-        <i class="fas fa-music" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Musical</span> -->
+      <i class="fas fa-music" style="color: #000000;"></i>
       Musical
     </button>
 
     <button id="mystery" class="button is-primary mystery-button">
-      <!-- <span class="icon"> -->
-        <i class="fab fa-searchengin" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Mystery</span> -->
+      <i class="fab fa-searchengin" style="color: #000000;"></i>
       Mystery
     </button>
 
     <button id="fantasy" class="button is-primary fantasy-button">
-      <!-- <span class="icon"> -->
-        <i class="fas fa-hat-wizard" style="color: #000000;"></i>
-      <!-- </span>
-      <span>Fantasy</span> -->
+      <i class="fas fa-hat-wizard" style="color: #000000;"></i>
       Fantasy
     </button>
 
@@ -147,7 +129,7 @@
 
 
 <!-- added link to JS W.K. -->
-  <script src="assets/js/script.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 
 </html>
