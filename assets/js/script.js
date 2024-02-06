@@ -10,7 +10,7 @@ genreBtn.addEventListener('click', function(event){
 });
 
 document.querySelector(".is-success").addEventListener('click', function(event){
-  console.log("confirm")
+  document.location.replace("spinner.html")
 })
 
 // TMDb API fetch H.E
