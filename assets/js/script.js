@@ -1,4 +1,10 @@
-
+//event listener for buttons W.K.
+var genreBtn = document.querySelector(".buttons")
+genreBtn.addEventListener('click', function(event){
+    if(event.target.tagName === "BUTTON"){
+    console.log(event.target.id); 
+    }
+});
 
 // TMDb API fetch H.E
 const options = {
@@ -13,3 +19,5 @@ fetch('https://api.themoviedb.org/3/authentication', options)
   .then(response => response.json())
   .then(response => console.log(response))
   .catch(err => console.error(err));
+
+ 
