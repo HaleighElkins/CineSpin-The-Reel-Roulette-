@@ -54,6 +54,7 @@
   <div class="notification is-primary">
     Choose which genre you would like to watch.
   </div>
+
   <div class="buttons">
 
     <!-- had to remove the span classes to make event delegation work W.K. -->
@@ -118,6 +119,23 @@
 
 <!-- TO DO: HTML for confirmation button -->
 
+<div id="modal-confirm-genre" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <p>You have chosen:</p>
+      <span id="user-choice"></span>
+      <p>Are you sure?</p>
+    </div>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Confirm</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+
+  
+</div>
 
 
 
@@ -129,7 +147,7 @@
 
 
 <!-- added link to JS W.K. -->
-<script src="assets/js/script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 
 </html>
