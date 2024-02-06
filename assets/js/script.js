@@ -1,10 +1,17 @@
 //event listener for buttons W.K.
 var genreBtn = document.querySelector(".buttons")
+var userChoice = "";
 genreBtn.addEventListener('click', function(event){
     if(event.target.tagName === "BUTTON"){
     console.log(event.target.id); 
+    userChoice = event.target.id;
+    document.getElementById("user-choice").textContent = userChoice;
     }
 });
+
+document.querySelector(".is-success").addEventListener('click', function(event){
+  console.log("confirm")
+})
 
 // TMDb API fetch H.E
 const options = {
