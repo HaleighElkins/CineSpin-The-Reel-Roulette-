@@ -97,10 +97,9 @@ const options = {
 
 var queryResult = [];
 
-
-
-
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=28', options)
+//added function to generate random page number for query results W.K via B.M. 
+var pageNumber = Math.floor(Math.random() * (10 - 1));
+fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page='+ pageNumber +'&sort_by=popularity.desc&with_genres=28', options)
     .then(response => response.json())
     .then(response => console.log(response))
     // .then(response => queryResult[response])
