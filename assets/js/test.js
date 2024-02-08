@@ -96,31 +96,13 @@ const options = {
 
 
 var queryResult = [];
+var pageNumber = Math.floor(Math.random() * (10 - 1));
 
 
 
 
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=28', options)
+fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page='+pageNumber+'&sort_by=popularity.desc&with_genres=28', options)
     .then(response => response.json())
     .then(response => console.log(response))
     // .then(response => queryResult[response])
     .catch(err => console.error(err));
-
-
-
-
-
-
-
-
-
-
-// pick random page number 1-10 for results in genres
-
-
-function randomPageNumber() {
-    console.log(Math.floor(Math.random() * (10 - 1)));
-};
-
-
-randomPageNumber();
