@@ -37,83 +37,83 @@
         </h1>
         <!-- Added in contianer H.E -->
         <div class="custom-subtitle-container">
-        <h2 class="subtitle custom-subtitle">
-          Picking A Movie Doesn't Have To Be Hard!
-        </h2>
-      </div>
+          <h2 class="subtitle custom-subtitle">
+            Picking A Movie Doesn't Have To Be Hard!
+          </h2>
+        </div>
       </div>
     </div>
   </section>
 
-<!-- this is a test note -->
+  <!-- this is a test note -->
 
 
-<!-- Icon and genre list. I will add css to center and look nicer, also some icons just won't load properly. H.E -->
-<!-- added id's to each button for eventlistener W.K. -->
+  <!-- Icon and genre list. I will add css to center and look nicer, also some icons just won't load properly. H.E -->
+  <!-- added id's to each button for eventlistener W.K. -->
 
-<div class="container has-text-centered has-background-primary" id="icons">
-  <div class="notification is-primary">
-    Choose which genre you would like to watch.
-  </div>
+  <div class="container has-text-centered has-background-primary" id="icons">
+    <div class="notification is-primary">
+      Choose which genre you would like to watch.
+    </div>
 
-  <div class="buttons js-modal-trigger" data-target="modal-js-example">
+    <div class="buttons js-modal-trigger-genre" data-target="modal-js-example">
 
-    <!-- had to remove the span classes to make event delegation work W.K. -->
-    <button id="comedy" class="button is-primary comedy-button">
-      <i class="fas fa-laugh" style="color: #030407;"></i>
-      Comedy
-    </button>
+      <!-- had to remove the span classes to make event delegation work W.K. -->
+      <button id="35" class="button is-primary comedy-button">
+        <i class="fas fa-laugh" style="color: #030407;"></i>
+        Comedy
+      </button>
 
-    <button id="family" class="button is-primary family-button">
-      <i class="material-symbols-outlined">
-        home
-      </i>
-      Family
-    </button>
+      <button id="10751" class="button is-primary family-button">
+        <i class="material-symbols-outlined">
+          home
+        </i>
+        Family
+      </button>
 
-    <button id="action" class="button is-primary action-button">
-      <i class="material-symbols-outlined">
-        minor_crash
-      </i>
-      Action
-    </button>
+      <button id="28" class="button is-primary action-button">
+        <i class="material-symbols-outlined">
+          minor_crash
+        </i>
+        Action
+      </button>
 
-    <button id="romantic" class="button is-primary romantic-button">
-      <i class="fas fa-heart" style="color: #000000;"></i>
-      Romantic
-    </button>
+      <button id="10749" class="button is-primary romantic-button">
+        <i class="fas fa-heart" style="color: #000000;"></i>
+        Romance
+      </button>
 
-    <button id="documentary" class="button is-primary doc-button">
-      <i class="material-symbols-outlined">
-        history_edu
-      </i>
-      Documentary
-    </button>
+      <button id="99" class="button is-primary doc-button">
+        <i class="material-symbols-outlined">
+          history_edu
+        </i>
+        Documentary
+      </button>
 
-    <button id="sci-fi" class="button is-primary sci-button">
-      <i class="fas fa-user-astronaut" style="color: #000000;"></i>
-      Sci-Fi
-    </button>
+      <button id="878" class="button is-primary sci-button">
+        <i class="fas fa-user-astronaut" style="color: #000000;"></i>
+        Sci-Fi
+      </button>
 
-    <button id="horror" class="button is-primary horror-button">
-      <i class="fas fa-surprise" style="color: #000000;"></i>
-      Horror
-    </button>
+      <button id="27" class="button is-primary horror-button">
+        <i class="fas fa-surprise" style="color: #000000;"></i>
+        Horror
+      </button>
 
-    <button id="musical" class="button is-primary musical-button">
-      <i class="fas fa-music" style="color: #000000;"></i>
-      Musical
-    </button>
+      <button id="10402" class="button is-primary musical-button">
+        <i class="fas fa-music" style="color: #000000;"></i>
+        Musical
+      </button>
 
-    <button id="mystery" class="button is-primary mystery-button">
-      <i class="fab fa-searchengin" style="color: #000000;"></i>
-      Mystery
-    </button>
+      <button id="9648" class="button is-primary mystery-button">
+        <i class="fab fa-searchengin" style="color: #000000;"></i>
+        Mystery
+      </button>
 
-    <button id="fantasy" class="button is-primary fantasy-button">
-      <i class="fas fa-hat-wizard" style="color: #000000;"></i>
-      Fantasy
-    </button>
+      <button id="14" class="button is-primary fantasy-button">
+        <i class="fas fa-hat-wizard" style="color: #000000;"></i>
+        Fantasy
+      </button>
 
     </div>
   </div>
@@ -130,7 +130,7 @@
         <p>Are you sure?</p>
       </div>
       <footer class="modal-card-foot">
-        <button class="button is-success">Confirm</button>
+        <button class="button is-success js-modal-trigger-spinner">Confirm</button>
         <button class="button">Cancel</button>
       </footer>
     </div>
@@ -140,11 +140,24 @@
 
 
 
+  <div id="modal-spinner" class="modal">
+    <div class="modal-background"></div>
+    <div id="chart"></div>
+    <div id="question">
+      <h1></h1>
+    </div>
+
+
+
+  </div>
 
 
 
 
 
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> 
+  <script src="assets/js/spinner.js"></script>
+  
 
 
   <script src="assets/js/modal.js"></script>
