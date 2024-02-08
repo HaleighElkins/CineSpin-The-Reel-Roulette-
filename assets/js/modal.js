@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
-    function openModal() {
+    function openGenreModal() {
       document.getElementById("modal-confirm-genre").classList.add('is-active');
     }
   
+    function openSpinnerModal() {
+      document.getElementById("modal-spinner").classList.add('is-active');
+    }
+
     function closeModal($el) {
       $el.classList.remove('is-active');
     }
@@ -15,12 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     // Add a click event on buttons to open a specific modal
-    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    (document.querySelectorAll('.js-modal-trigger-genre') || []).forEach(($trigger) => {
       const modal = $trigger.dataset.target;
       const $target = document.getElementById(modal);
   
       $trigger.addEventListener('click', () => {
-        openModal($target);
+        openGenreModal($target);
+      });
+    });
+
+    (document.querySelectorAll('.js-modal-trigger-spinner') || []).forEach(($trigger) => {
+      const modal = $trigger.dataset.target;
+      const $target = document.getElementById(modal);
+  
+      $trigger.addEventListener('click', () => {
+        openSpinnerModal($target);
       });
     });
   
