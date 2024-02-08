@@ -86,7 +86,7 @@
 
 
 
-const options = {
+var options = {
     method: 'GET',
     headers: {
         accept: 'application/json',
@@ -106,3 +106,9 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
     .then(response => console.log(response))
     // .then(response => queryResult[response])
     .catch(err => console.error(err));
+
+
+    // if (i=0, data.length < 9, i++) {
+    //     response.results[i].original_title
+
+    // }

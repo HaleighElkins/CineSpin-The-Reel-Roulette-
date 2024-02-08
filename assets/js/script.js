@@ -14,7 +14,7 @@ document.querySelector(".is-success").addEventListener('click', function(event){
 })
 
 // TMDb API fetch H.E
-const options = {
+var options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
