@@ -7,20 +7,76 @@ var padding = { top: 20, right: 40, bottom: 0, left: 0 },
     picked = 100000,
     oldpick = [],
     color = d3.scale.category20();//category20c()
+    // -----------------Start of edit----------------------------------------
 //randomNumbers = getRandomNumbers();
 //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
 var data = [
-    { "label": "", "value": 1, "question": "What CSS property is used for specifying the area between the content and its border?" }, // padding
-    { "label": "", "value": 2, "question": "What CSS property is used for changing the font?" }, //font-family
-    { "label": "", "value": 3, "question": "What CSS property is used for changing the color of text?" }, //color
-    { "label": "", "value": 4, "question": "What CSS property is used for changing the boldness of text?" }, //font-weight
-    { "label": "", "value": 5, "question": "What CSS property is used for changing the size of text?" }, //font-size
-    { "label": "", "value": 6, "question": "What CSS property is used for changing the background color of a box?" }, //background-color
-    { "label": "", "value": 7, "question": "Which word is used for specifying an HTML tag that is inside another tag?" }, //nesting
-    { "label": "", "value": 8, "question": "Which side of the box is the third number in: margin:1px 1px 1px 1px; ?" }, //bottom
-    { "label": "", "value": 9, "question": "What are the fonts that don't have serifs at the ends of letters called?" }, //sans-serif
-    { "label": "", "value": 10, "question": "With CSS selectors, what character prefix should one use to specify a class?" }
+    { "title": "", "Movie 1`": 1, "Overview 1": "" }, 
+    { "title": "", "Movie 2'": 2, "Overview 2": "" }, 
+    { "title": "", "Movie 3`": 3, "Overview 3": "" }, 
+    { "title": "", "Movie 4": 4, "Overview 4": "" }, 
+    { "title": "", "Movie 5`": 5, "Overview 5": "" }, 
+    { "title": "", "Movie 6": 6, "Overview 6": "" }, 
+    { "title": "", "Movie 7`": 7, "Overview 7": "" }, 
+    { "title": "", "Movie 8": 8, "Overview 8": "" }, 
+    { "title": "", "Movie 9`": 9, "Overview 9": "" }, 
+    { "title": "", "Movie 10": 10, "Overview 10": "" }, 
 ];
+
+
+
+const tmdbApiKey = '4864674e82e34fb69ffcc59e9aa81152'; // Replace with your TMDb API key
+
+// Function to fetch movie data based on the selected genre
+async function fetchMoviesByGenre(genreId) {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}&api_key=${tmdbApiKey}`);
+    const result = await response.json();
+    return result.results;
+  } catch (error) {
+    console.error('Error fetching movie data:', error);
+    return [];
+  }
+}
+
+// Function to update the spinner with TMDb movie data based on the selected genre
+async function updateSpinnerWithTmdbData(genreId) {
+  try {
+    const tmdbMovies = await fetchMoviesByGenre(genreId);
+
+    // Update the 'data' array with TMDb movie data
+    const newData = tmdbMovies.map((movie, index) => ({
+      label: movie.title || '',
+      value: index + 1,
+      question: movie.overview || '',
+    }));
+
+    // Update the 'data' array without redeclaring it
+    data.splice(0, data.length, ...newData);
+
+    // Update the pie chart with the new data
+    updatePieChart();
+    
+// reset any state related to the old spin
+    oldpick = [];
+    picked = 100000;
+  } catch (error) {
+    console.error('Error updating spinner with TMDb data:', error);
+  }
+}
+
+// Example usage: Assume 'userSelectedGenreId' is the selected genre ID
+const userSelectedGenreId = 35; // Replace with the actual genre ID
+updateSpinnerWithTmdbData(userSelectedGenreId);
+
+
+
+
+
+
+
+
+// --------------------------------------------END------------------------------------
 var svg = d3.select('#chart')
     .append("svg")
     .data([data])
