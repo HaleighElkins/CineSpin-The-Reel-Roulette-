@@ -24,6 +24,25 @@ document.querySelector(".is-success").addEventListener('click', function(event){
   // document.location.replace("spinner.html")
 })
 
+async function getMovies() {
+  var pageNumber = Math.floor(Math.random() * (10 - 1)+1);
+  var response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=' + pageNumber + '&sort_by=popularity.desc&with_genres='+ userChoiceId, options);
+  movies = await response.json();
+  console.log(movies);
+  console.log(movies.results[0].title)
+  pushSpinner();
+  arcs.append("text").attr("transform", function (d) {
+    d.innerRadius = 0;
+    d.outerRadius = r;
+    d.angle = (d.startAngle + d.endAngle) / 2;
+    return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius - 10) + ")";
+})
+    .attr("text-anchor", "end")
+    .text(function (d, i) {
+        return data[i].label;
+    });
+}
+
 
 
 

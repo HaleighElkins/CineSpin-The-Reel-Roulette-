@@ -100,13 +100,15 @@ var pageNumber = Math.floor(Math.random() * (10 - 1));
 
 
 
+
+
 fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page='+pageNumber+'&sort_by=popularity.desc&with_genres=28', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    // .then(response => queryResult[response])
+    .catch(err => console.error(err));
 
 //added function to generate random page number for query results W.K via B.M. 
-
-
-var pageNumber = Math.floor(Math.random() * (10 - 1) + 1);
-
 // var pageNumber = Math.floor(Math.random() * (10 - 1));
 // fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page='+ pageNumber +'&sort_by=popularity.desc&with_genres=28', options)
 //     .then(response => response.json())
@@ -119,14 +121,17 @@ var pageNumber = Math.floor(Math.random() * (10 - 1) + 1);
 
 
 
-// fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page='+ pageNumber +'&sort_by=popularity.desc&with_genres=28', options)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     // .then(response => queryResult[response])
-//     .catch(err => console.error(err));
 
 
-    // if (i=0, data.length < 9, i++) {
-    //     response.results[i].original_title
 
-    // }
+
+// pick random page number 1-10 for results in genres
+
+
+function randomPageNumber() {
+    console.log(Math.floor(Math.random() * (10 - 1)));
+};
+
+
+randomPageNumber();
+
