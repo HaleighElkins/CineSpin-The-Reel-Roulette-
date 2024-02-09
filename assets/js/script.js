@@ -9,14 +9,54 @@ genreBtn.addEventListener('click', function(event){
     }
 });
 
+
+
 document.querySelector(".is-success").addEventListener('click', function(event){
   var pageNumber = Math.floor(Math.random() * (10 - 1));
-  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page='+ pageNumber +'&sort_by=popularity.desc&with_genres=' + userChoice, options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    // .then(response => queryResult[response])
-    .catch(err => console.error(err));
-  // document.location.replace("spinner.html")
+  async function getMovies() {
+
+    var response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=' + pageNumber + '&sort_by=popularity.desc&with_genres='+userChoice, options);
+    var movies = await response.json();
+    console.log(movies);
+
+
+
+    function pushData() {
+
+      for (let i = 0; i < 10; i++) {
+        data[i].label = movies.results[i].title;
+
+      };
+  
+
+      console.log(data);
+
+      return;
+
+    };
+
+    function pushDetails(){
+      // need to set up the request to get the data for the 
+
+    }
+    
+    
+    
+    
+    
+    
+    pushData();
+
+
+    
+
+
+
+
+  }
+
+  getMovies();
+
 })
 
 
