@@ -6,21 +6,44 @@ var padding = { top: 20, right: 40, bottom: 0, left: 0 },
     oldrotation = 0,
     picked = 100000,
     oldpick = [],
-    color = d3.scale.category20();//category20c()
-//randomNumbers = getRandomNumbers();
-//http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
+    color = d3.scale.category20();
+
 var data = [
-    { "label": "", "value": 1, "question": "What CSS property is used for specifying the area between the content and its border?" }, // padding
-    { "label": "", "value": 2, "question": "What CSS property is used for changing the font?" }, //font-family
-    { "label": "", "value": 3, "question": "What CSS property is used for changing the color of text?" }, //color
-    { "label": "", "value": 4, "question": "What CSS property is used for changing the boldness of text?" }, //font-weight
-    { "label": "", "value": 5, "question": "What CSS property is used for changing the size of text?" }, //font-size
-    { "label": "", "value": 6, "question": "What CSS property is used for changing the background color of a box?" }, //background-color
-    { "label": "", "value": 7, "question": "Which word is used for specifying an HTML tag that is inside another tag?" }, //nesting
-    { "label": "", "value": 8, "question": "Which side of the box is the third number in: margin:1px 1px 1px 1px; ?" }, //bottom
-    { "label": "", "value": 9, "question": "What are the fonts that don't have serifs at the ends of letters called?" }, //sans-serif
-    { "label": "", "value": 10, "question": "With CSS selectors, what character prefix should one use to specify a class?" }
+    { "label": "", "value": 1, "question": "" },
+    { "label": "", "value": 2, "question": "" },
+    { "label": "", "value": 3, "question": "" },
+    { "label": "", "value": 4, "question": "" },
+    { "label": "", "value": 5, "question": "" },
+    { "label": "", "value": 6, "question": "" },
+    { "label": "", "value": 7, "question": "" },
+    { "label": "", "value": 8, "question": "" },
+    { "label": "", "value": 9, "question": "" },
+    { "label": "", "value": 10, "question": "" },
 ];
+
+const tmdbApiKey = '4864674e82e34fb69ffcc59e9aa81152'
+
+// Function to fetch the description of the selected movie
+async function fetchMovieDescription(movieId) {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${tmdbApiKey}`);
+        if (!response.ok) {
+            console.error('Error fetching movie description:', response.statusText);
+            return 'Error fetching description';
+        }
+
+        const result = await response.json();
+        console.log('Movie Description Result:', result); // Add this line for debugging
+        return result.overview || 'No description available';
+    } catch (error) {
+        console.error('Error fetching movie description:', error.message);
+        return 'Error fetching description';
+    }
+}
+
+
+
+
 var svg = d3.select('#chart')
     .append("svg")
     .data([data])
@@ -57,50 +80,48 @@ arcs.append("text").attr("transform", function (d) {
         return data[i].label;
     });
 container.on("click", spin);
-function spin(d) {
 
+
+
+// ======= 
+function spin(d) {
     container.on("click", null);
-    //all slices have been seen, all done
-    console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
-    if (oldpick.length == data.length) {
-        console.log("done");
-        container.on("click", null);
-        return;
-    }
+
     var ps = 360 / data.length,
-        pieslice = Math.round(1440 / data.length),
         rng = Math.floor((Math.random() * 1440) + 360);
 
     rotation = (Math.round(rng / ps) * ps);
 
     picked = Math.round(data.length - (rotation % 360) / ps);
     picked = picked >= data.length ? (picked % data.length) : picked;
-    if (oldpick.indexOf(picked) !== -1) {
-        d3.select(this).call(spin);
-        return;
-    } else {
-        oldpick.push(picked);
-    }
+
     rotation += 90 - Math.round(ps / 2);
+
     vis.transition()
         .duration(3000)
         .attrTween("transform", rotTween)
-        .each("end", function () {
-            //mark question as seen
+        .each("end", async function () {
+            // Fetch the selected movie description
+            const selectedMovieId = data[picked].value;
+            const description = await fetchMovieDescription(selectedMovieId);
+
+            // Mark question as seen
             d3.select(".slice:nth-child(" + (picked + 1) + ") path")
                 .attr("fill", "#111");
-            //populate question
+
+            // Populate question
             d3.select("#question h1")
-                .text(data[picked].question);
+                .text(description);
+
             oldrotation = rotation;
 
             /* Get the result value from object "data" */
-            console.log(data[picked].value)
+            console.log(data[picked].value);
 
-            /* Comment the below line for restrict spin to sngle time */
-            container.on("click", spin);
+            container.on("click", spin); // Re-enable click event
         });
 }
+
 //make arrow
 svg.append("g")
     .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h / 2) + padding.top) + ")")
