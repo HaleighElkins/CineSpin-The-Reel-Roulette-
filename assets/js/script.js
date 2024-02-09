@@ -23,6 +23,16 @@ async function getMovies() {
   console.log(movies);
   console.log(movies.results[0].title)
   pushSpinner();
+  arcs.append("text").attr("transform", function (d) {
+    d.innerRadius = 0;
+    d.outerRadius = r;
+    d.angle = (d.startAngle + d.endAngle) / 2;
+    return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius - 10) + ")";
+})
+    .attr("text-anchor", "end")
+    .text(function (d, i) {
+        return data[i].label;
+    });
 }
 
 //function to push movie data into data variable
