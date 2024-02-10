@@ -1,123 +1,179 @@
 :root {
-  background-color: #B19470;
-  /* Fonts are not working */
+  background-color: #b19470;
 }
 
-*{
-  font-family: 'Labrada', serif;
-  font-family: 'Rozha One', serif;
-  font-family: 'Sixtyfour', sans-serif;
-}
+/* * {
+  font-family: "Rozha One", serif;
+  font-family: "Labrada", serif;
+  font-family: "Sixtyfour", sans-serif;
+} */
 
 /* css for the spinner */
-text{
-    font-family:"Labrada";
-    font-size:11px;
-    pointer-events:none;
+text {
+  font-family: "Labrada";
+  font-size: 11px;
+  pointer-events: none;
 }
-#chart{
-    position:absolute;
-    width:500px;
-    height:500px;
-    background-color: #F8FAE5;
-    top:0;
-    left:0;
+#chart {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: #f8fae5;
+  top: 0;
+  left: 0;
 }
-#description{
-    position: absolute;
-    width:400px;
-    height:500px;
-    background-color: #F8FAE5;
-    top:0;
-    left:500px;
+#description {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  background-color: #f8fae5;
+  top: 0;
+  left: 500px;
 }
-#description h1{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: "Labrada";
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    top:50%;
-    -webkit-transform:translate(0,-50%);
-            transform:translate(0,-50%);
+#description h1 {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Labrada";
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 /* css for the spinner end */
 
-
-
 .custom-hero {
-background-color: #F8FAE5;
-align-items: center;
+  background-color: #f8fae5;
+  align-items: center;
 }
 
-.custom-title{
-justify-content: center;
-font-size: 90px;
+.custom-title {
+  justify-content: center;
+  font-size: 90px;
+  font-family: "Rozha One", serif;
 }
 
 .custom-subtitle-container {
-    display: flex;
-    align-items: center;
-    justify-content:flex-end;
-    height: 100px;
+  font-family: "Rozha One", serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
 }
-/* still not centered under title */
 
-.custom-subtitle{
-    font-size: 50px;
-} 
-
+.custom-subtitle {
+  font-size: 50px;
+}
 
 .notification.is-primary {
-    background-color: #2B2A4C;
-    color: #e9e2e2; 
-  }
-
-
-button {
-    width: 100%;
-    margin: 10px;
+  background-color: #2b2a4c;
+  color: #e9e2e2;
+  font-family: "Sixtyfour", sans-serif;
 }
 
+button {
+  width: 100%;
+  margin: 10px;
+}
 
 #icons {
-    background-color: #B19470 !important;
-    font-size: 30px;
-    padding: 10px; 
+  background-color: #b19470 !important;
+  font-size: 30px;
+  padding: 10px;
 }
 
 #icons .button i {
-    margin-right: 15px; /* Adjust the margin as needed */
-  }
-
-
+  margin-right: 15px; 
+}
 
 /* Background Color for buttons */
-#icons .comedy-button { background-color: #43766C; }
-#icons .family-button { background-color:#43766C ; }
-#icons .action-button { background-color: #43766C; }
-#icons .romantic-button { background-color: #43766C;}
-#icons .doc-button { background-color: #43766C; }
-#icons .sci-button { background-color: #43766C; }
-#icons .horror-button { background-color: #43766C; }
-#icons .musical-button { background-color: #43766C; }
-#icons .mystery-button { background-color: #43766C; }
-#icons .fantasy-button { background-color: #43766C; }
+#icons .comedy-button {
+  background-color: #43766c;
+}
+#icons .family-button {
+  background-color: #43766c;
+}
+#icons .action-button {
+  background-color: #43766c;
+}
+#icons .romantic-button {
+  background-color: #43766c;
+}
+#icons .doc-button {
+  background-color: #43766c;
+}
+#icons .sci-button {
+  background-color: #43766c;
+}
+#icons .horror-button {
+  background-color: #43766c;
+}
+#icons .musical-button {
+  background-color: #43766c;
+}
+#icons .mystery-button {
+  background-color: #43766c;
+}
+#icons .fantasy-button {
+  background-color: #43766c;
+}
 
+/* These are for the google icons that needed to be a different color. H.E */
+.family-button i.material-symbols-outlined {
+  color: #000000;
+}
 
-  /* These are for the google icons that needed to be a different color. H.E */
-  .family-button i.material-symbols-outlined {
-    color: #000000; 
+.action-button i.material-symbols-outlined {
+  color: #000000;
+}
+
+.doc-button i.material-symbols-outlined {
+  color: #000000;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  #description {
+    width: 100%;
+    left: 0;
   }
 
-
-  .action-button i.material-symbols-outlined {
-    color:#000000;
+  #description h1 {
+    font-size: 16px;
   }
 
+  /* Spinner Styles for smaller screens */
+  text {
+    font-size: 10px; /* Adjust font size for smaller screens */
+  }
+
+  #chart {
+    width: 50%; /* Adjust width for smaller screens */
+  }
+
+  @media only screen and (max-width: 400px) {
+    #description {
+      width: 90%;
+      left: 0;
+    }
   
-  .doc-button i.material-symbols-outlined {
-    color:#000000;
+    #description h1 {
+      font-size: 10px;
+    }
+  
+    /* Spinner Styles for smaller screens */
+    text {
+      font-size: 14px;
+    }
+  
+    #chart {
+      width: 100%; 
+    }
   }
+  
 
+
+
+
+}
