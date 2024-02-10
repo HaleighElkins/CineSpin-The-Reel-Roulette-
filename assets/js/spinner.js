@@ -25,6 +25,41 @@ var data = [
 // Updated Start H.E ----------------------
 
 
+// async function getPlot(movieTitle) {
+//     try {
+//         var searchResults = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&s=' + encodeURIComponent(movieTitle));
+//         var searchData = await searchResults.json();
+
+//         if (searchData.Response === 'False' || !searchData.Search || searchData.Search.length === 0) {
+//             throw new Error('Movie not found or API error. Search API response:', searchData);
+//         }   
+//         // Assuming you want the details for the first result
+//         var imdbID = searchData.Search[0].imdbID;
+
+//         var getDetails = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&i=' + imdbID);
+//         var details = await getDetails.json();
+
+//         if (details.Response === 'False') {
+//             throw new Error('Error fetching movie details. Details API response:', details);
+//         }
+
+//         console.log('OMDb API details response:', details);
+
+//         if (!details.Plot) {
+//             // Assign a message when Plot is not available
+//             details.Plot = 'No description available for this movie.';
+//         }
+        
+//         return details.Plot;
+
+
+//     } catch (error) {
+//         console.error(error.message);
+//         throw error;
+//     }
+// }
+
+
 async function getPlot(movieTitle) {
     try {
         var searchResults = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&s=' + encodeURIComponent(movieTitle));
@@ -32,8 +67,8 @@ async function getPlot(movieTitle) {
 
         if (searchData.Response === 'False' || !searchData.Search || searchData.Search.length === 0) {
             throw new Error('Movie not found or API error. Search API response:', searchData);
-        }
-
+        }   
+        
         // Assuming you want the details for the first result
         var imdbID = searchData.Search[0].imdbID;
 
@@ -45,12 +80,21 @@ async function getPlot(movieTitle) {
         }
 
         console.log('OMDb API details response:', details);
+
+        if (!details.Plot) {
+            // Assign a message when Plot is not available
+            details.Plot = 'No description available for this movie.';
+        }
+        
         return details.Plot;
+
     } catch (error) {
         console.error(error.message);
-        throw error;
+        // Provide a default message when there's an error
+        return 'An error occurred while fetching the movie details.';
     }
 }
+
 
 // Updated End H.E -----------------
 
