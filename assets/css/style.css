@@ -9,39 +9,49 @@
   font-family: 'Sixtyfour', sans-serif;
 }
 
+
 /* css for the spinner */
 text{
-    font-family:"Labrada";
-    font-size:11px;
-    pointer-events:none;
+  font-family:"Labrada";
+  font-size:11px;
+  pointer-events:none;
 }
 #chart{
-    position:absolute;
-    width:500px;
-    height:500px;
-    background-color: #F8FAE5;
-    top:0;
-    left:0;
+  position:absolute;
+  width:500px;
+  height:500px;
+  background-color: #F8FAE5;
+  top:0;
+  left:0;
 }
-#description{
-    position: absolute;
-    width:400px;
-    height:500px;
-    background-color: #F8FAE5;
-    top:0;
-    left:500px;
+
+
+#movie-title h1 {
+font-size: 50px;
+Color:Pink;
+font-weight: bold;
+font-family: "Labrada";
+position: absolute;
+top: 10%;
+left: 60%;
+transform: translate(-50%, -50%);
+width: 100%; /* Ensure the title takes full width */
+text-align: center; /* Center the text horizontally */
 }
-#description h1{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: "Labrada";
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    top:50%;
-    -webkit-transform:translate(0,-50%);
-            transform:translate(0,-50%);
+
+
+
+#description h1 {
+font-size: 30px;
+color:pink;
+font-weight: bold;
+font-family: "Labrada";
+position: relative; 
+margin-top: -15%; 
+margin-left: 40%; 
+width: 50%; 
 }
+
 /* css for the spinner end */
 
 
@@ -62,7 +72,7 @@ font-size: 90px;
     justify-content:flex-end;
     height: 100px;
 }
-/* still not centered under title */
+
 
 .custom-subtitle{
     font-size: 50px;
@@ -121,3 +131,43 @@ button {
     color:#000000;
   }
 
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  #description {
+    width: 100%;
+    left: 0;
+  }
+
+  #description h1 {
+    font-size: 16px;
+  }
+
+  /* Spinner Styles for smaller screens */
+  text {
+    font-size: 10px; /* Adjust font size for smaller screens */
+  }
+
+  #chart {
+    width: 50%; /* Adjust width for smaller screens */
+  }
+
+  @media only screen and (max-width: 400px) {
+    #description {
+      width: 90%;
+      left: 0;
+    }
+  
+    #description h1 {
+      font-size: 10px;
+    }
+  
+    /* Spinner Styles for smaller screens */
+    text {
+      font-size: 14px;
+    }
+  
+    #chart {
+      width: 100%; 
+    }
+  }
+}

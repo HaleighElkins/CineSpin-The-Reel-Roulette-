@@ -24,7 +24,6 @@ var data = [
 
 // Updated Start H.E ----------------------
 
-
 async function getPlot(movieTitle) {
     try {
         var searchResults = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&s=' + encodeURIComponent(movieTitle));
@@ -32,8 +31,8 @@ async function getPlot(movieTitle) {
 
         if (searchData.Response === 'False' || !searchData.Search || searchData.Search.length === 0) {
             throw new Error('Movie not found or API error. Search API response:', searchData);
-        }
-
+        }   
+        
         // Assuming you want the details for the first result
         var imdbID = searchData.Search[0].imdbID;
 
@@ -45,12 +44,21 @@ async function getPlot(movieTitle) {
         }
 
         console.log('OMDb API details response:', details);
+
+        if (!details.Plot) {
+            // Assign a message when Plot is not available
+            details.Plot = 'No description available for this movie.';
+        }
+        
         return details.Plot;
+
     } catch (error) {
         console.error(error.message);
-        throw error;
+        // Provide a default message when there's an error
+        return 'An error occurred while fetching the movie details.';
     }
 }
+
 
 // Updated End H.E -----------------
 
@@ -127,11 +135,17 @@ try {
     var selectedMovieTitle = data[picked].label; 
     var description = await getPlot(selectedMovieTitle);
 
-    // Display the movie description
+    // Display the movie description and title
+    console.log("Selected Movie Title:", selectedMovieTitle);
     console.log(description);
 
     d3.select("#description h1")
         .text(description);
+        
+       // Display the movie title
+       d3.select("#movie-title h1")
+       .text(selectedMovieTitle);
+
 } catch (error) {
     // Handle the error
     console.error('Error fetching movie description:', error);
@@ -145,7 +159,6 @@ d3.select("#description h1").text(description);
         /* Comment the below line for restrict spin to sngle time */
         container.on("click", spin);
 })}
-
 
 //make arrow
 svg.append("g")
