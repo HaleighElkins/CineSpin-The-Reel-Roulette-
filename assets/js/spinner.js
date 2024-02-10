@@ -79,16 +79,16 @@ arcs.append("path")
     .attr("fill", function (d, i) { return color(i); })
     .attr("d", function (d) { return arc(d); });
 // add the text
-arcs.append("text").attr("transform", function (d) {
-    d.innerRadius = 0;
-    d.outerRadius = r;
-    d.angle = (d.startAngle + d.endAngle) / 2;
-    return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius - 10) + ")";
-})
-    .attr("text-anchor", "end")
-    .text(function (d, i) {
-        return data[i].label;
-    });
+// arcs.append("text").attr("transform", function (d) {
+//     d.innerRadius = 0;
+//     d.outerRadius = r;
+//     d.angle = (d.startAngle + d.endAngle) / 2;
+//     return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius - 10) + ")";
+// })
+//     .attr("text-anchor", "end")
+//     .text(function (d, i) {
+//         return data[i].label;
+//     });
 container.on("click", spin);
 
 function spin(d) {
@@ -130,14 +130,14 @@ try {
     // Display the movie description
     console.log(description);
 
-    d3.select("#question h1")
+    d3.select("#description h1")
         .text(description);
 } catch (error) {
     // Handle the error
     console.error('Error fetching movie description:', error);
 
-    console.log('Selected element:', d3.select("#question h1"));
-d3.select("#question h1").text(description);
+    console.log('Selected element:', d3.select("#description h1"));
+d3.select("#description h1").text(description);
 
 }        
         // Updated End H.E ---------------

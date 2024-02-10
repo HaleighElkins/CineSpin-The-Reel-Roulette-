@@ -21,7 +21,7 @@ async function getMovies() {
   var response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=' + pageNumber + '&sort_by=popularity.desc&with_genres='+ userChoiceId, options);
   movies = await response.json();
   console.log(movies);
-  console.log(movies.results[0].title)
+  console.log(movies.results[0].id)
   pushSpinner();
   arcs.append("text").attr("transform", function (d) {
     d.innerRadius = 0;
@@ -39,6 +39,7 @@ async function getMovies() {
 function pushSpinner() {
 for (let i=0; i<10; i++){
   data[i].label = (movies.results[i].title);
+  data[i].question = (movies.results[i].overview);
 }
 console.log(data);
 }

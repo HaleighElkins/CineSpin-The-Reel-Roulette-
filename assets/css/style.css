@@ -1,7 +1,17 @@
+:root {
+  background-color: #B19470;
+  /* Fonts are not working */
+}
+
+*{
+  font-family: 'Labrada', serif;
+  font-family: 'Rozha One', serif;
+  font-family: 'Sixtyfour', sans-serif;
+}
 
 /* css for the spinner */
 text{
-    font-family:Helvetica, Arial, sans-serif;
+    font-family:"Labrada";
     font-size:11px;
     pointer-events:none;
 }
@@ -9,20 +19,22 @@ text{
     position:absolute;
     width:500px;
     height:500px;
+    background-color: #F8FAE5;
     top:0;
     left:0;
 }
-#question{
+#description{
     position: absolute;
     width:400px;
     height:500px;
+    background-color: #F8FAE5;
     top:0;
-    left:520px;
+    left:500px;
 }
-#question h1{
-    font-size: 50px;
+#description h1{
+    font-size: 20px;
     font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Labrada";
     position: absolute;
     padding: 0;
     margin: 0;
@@ -32,14 +44,7 @@ text{
 }
 /* css for the spinner end */
 
-:root {
-    font-family: 'Labrada', serif;
-    font-family: 'Rozha One', serif;
-    font-family: 'Sixtyfour', sans-serif;
-    background-color: #B19470;
-    /* Fonts are not working */
-    
-}
+
 
 .custom-hero {
 background-color: #F8FAE5;
