@@ -21,28 +21,38 @@ var data = [
     { "label": "", "value": 10, "question": "" },
 ];
 
-const tmdbApiKey = '4864674e82e34fb69ffcc59e9aa81152'
 
-// Function to fetch the description of the selected movie
-async function fetchMovieDescription(movieId) {
+// Updated Start H.E ----------------------
+
+
+async function getPlot(movieTitle) {
     try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${tmdbApiKey}`);
-        if (!response.ok) {
-            console.error('Error fetching movie description:', response.statusText);
-            return 'Error fetching description';
+        var searchResults = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&s=' + encodeURIComponent(movieTitle));
+        var searchData = await searchResults.json();
+
+        if (searchData.Response === 'False' || !searchData.Search || searchData.Search.length === 0) {
+            throw new Error('Movie not found or API error. Search API response:', searchData);
         }
 
-        const result = await response.json();
-        console.log('Movie Description Result:', result); // Add this line for debugging
-        return result.overview || 'No description available';
+        // Assuming you want the details for the first result
+        var imdbID = searchData.Search[0].imdbID;
+
+        var getDetails = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&i=' + imdbID);
+        var details = await getDetails.json();
+
+        if (details.Response === 'False') {
+            throw new Error('Error fetching movie details. Details API response:', details);
+        }
+
+        console.log('OMDb API details response:', details);
+        return details.Plot;
     } catch (error) {
-        console.error('Error fetching movie description:', error.message);
-        return 'Error fetching description';
+        console.error(error.message);
+        throw error;
     }
 }
 
-
-
+// Updated End H.E -----------------
 
 var svg = d3.select('#chart')
     .append("svg")
@@ -81,9 +91,6 @@ arcs.append("text").attr("transform", function (d) {
     });
 container.on("click", spin);
 
-
-
-// ======= 
 function spin(d) {
     container.on("click", null);
 
@@ -97,30 +104,48 @@ function spin(d) {
 
     rotation += 90 - Math.round(ps / 2);
 
-    vis.transition()
+        vis.transition()
         .duration(3000)
         .attrTween("transform", rotTween)
         .each("end", async function () {
-            // Fetch the selected movie description
-            const selectedMovieId = data[picked].value;
-            const description = await fetchMovieDescription(selectedMovieId);
+        //mark question as seen
+        d3.select(".slice:nth-child(" + (picked + 1) + ") path")
+            .attr("fill", "#111");
+        //populate question
+        d3.select("#question h1")
+            .text(data[picked].question);
+        oldrotation = rotation;
 
-            // Mark question as seen
-            d3.select(".slice:nth-child(" + (picked + 1) + ") path")
-                .attr("fill", "#111");
+        /* Get the result value from object "data" */
+        console.log(data[picked].value)
+     
 
-            // Populate question
-            d3.select("#question h1")
-                .text(description);
+        // Updated Start H.E ---------------
 
-            oldrotation = rotation;
+// Fetch the movie description from OMDb API
+try {
+    var selectedMovieTitle = data[picked].label; 
+    var description = await getPlot(selectedMovieTitle);
 
-            /* Get the result value from object "data" */
-            console.log(data[picked].value);
+    // Display the movie description
+    console.log(description);
 
-            container.on("click", spin); // Re-enable click event
-        });
-}
+    d3.select("#question h1")
+        .text(description);
+} catch (error) {
+    // Handle the error
+    console.error('Error fetching movie description:', error);
+
+    console.log('Selected element:', d3.select("#question h1"));
+d3.select("#question h1").text(description);
+
+}        
+        // Updated End H.E ---------------
+
+        /* Comment the below line for restrict spin to sngle time */
+        container.on("click", spin);
+})}
+
 
 //make arrow
 svg.append("g")
@@ -162,6 +187,8 @@ function getRandomNumbers() {
         for (var i = 0; i < 1000; i++) {
             array[i] = Math.floor(Math.random() * 100000) + 1;
         }
-    }
+
+    } 
     return array;
+
 }
