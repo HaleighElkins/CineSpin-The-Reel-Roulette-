@@ -6,21 +6,54 @@ var padding = { top: 20, right: 40, bottom: 0, left: 0 },
     oldrotation = 0,
     picked = 100000,
     oldpick = [],
-    color = d3.scale.category20();//category20c()
-//randomNumbers = getRandomNumbers();
-//http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
+    color = d3.scale.category20();
+
 var data = [
-    { "label": "", "value": 1, "question": "What CSS property is used for specifying the area between the content and its border?" }, // padding
-    { "label": "", "value": 2, "question": "What CSS property is used for changing the font?" }, //font-family
-    { "label": "", "value": 3, "question": "What CSS property is used for changing the color of text?" }, //color
-    { "label": "", "value": 4, "question": "What CSS property is used for changing the boldness of text?" }, //font-weight
-    { "label": "", "value": 5, "question": "What CSS property is used for changing the size of text?" }, //font-size
-    { "label": "", "value": 6, "question": "What CSS property is used for changing the background color of a box?" }, //background-color
-    { "label": "", "value": 7, "question": "Which word is used for specifying an HTML tag that is inside another tag?" }, //nesting
-    { "label": "", "value": 8, "question": "Which side of the box is the third number in: margin:1px 1px 1px 1px; ?" }, //bottom
-    { "label": "", "value": 9, "question": "What are the fonts that don't have serifs at the ends of letters called?" }, //sans-serif
-    { "label": "", "value": 10, "question": "With CSS selectors, what character prefix should one use to specify a class?" }
+    { "label": "", "value": 1, "question": "" },
+    { "label": "", "value": 2, "question": "" },
+    { "label": "", "value": 3, "question": "" },
+    { "label": "", "value": 4, "question": "" },
+    { "label": "", "value": 5, "question": "" },
+    { "label": "", "value": 6, "question": "" },
+    { "label": "", "value": 7, "question": "" },
+    { "label": "", "value": 8, "question": "" },
+    { "label": "", "value": 9, "question": "" },
+    { "label": "", "value": 10, "question": "" },
 ];
+
+
+// Updated Start H.E ----------------------
+
+
+async function getPlot(movieTitle) {
+    try {
+        var searchResults = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&s=' + encodeURIComponent(movieTitle));
+        var searchData = await searchResults.json();
+
+        if (searchData.Response === 'False' || !searchData.Search || searchData.Search.length === 0) {
+            throw new Error('Movie not found or API error. Search API response:', searchData);
+        }
+
+        // Assuming you want the details for the first result
+        var imdbID = searchData.Search[0].imdbID;
+
+        var getDetails = await fetch('https://www.omdbapi.com/?apikey=6eeaf74d&i=' + imdbID);
+        var details = await getDetails.json();
+
+        if (details.Response === 'False') {
+            throw new Error('Error fetching movie details. Details API response:', details);
+        }
+
+        console.log('OMDb API details response:', details);
+        return details.Plot;
+    } catch (error) {
+        console.error(error.message);
+        throw error;
+    }
+}
+
+// Updated End H.E -----------------
+
 var svg = d3.select('#chart')
     .append("svg")
     .data([data])
@@ -57,50 +90,63 @@ arcs.append("text").attr("transform", function (d) {
         return data[i].label;
     });
 container.on("click", spin);
-function spin(d) {
 
+function spin(d) {
     container.on("click", null);
-    //all slices have been seen, all done
-    console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
-    if (oldpick.length == data.length) {
-        console.log("done");
-        container.on("click", null);
-        return;
-    }
+
     var ps = 360 / data.length,
-        pieslice = Math.round(1440 / data.length),
         rng = Math.floor((Math.random() * 1440) + 360);
 
     rotation = (Math.round(rng / ps) * ps);
 
     picked = Math.round(data.length - (rotation % 360) / ps);
     picked = picked >= data.length ? (picked % data.length) : picked;
-    if (oldpick.indexOf(picked) !== -1) {
-        d3.select(this).call(spin);
-        return;
-    } else {
-        oldpick.push(picked);
-    }
+
     rotation += 90 - Math.round(ps / 2);
-    vis.transition()
+
+        vis.transition()
         .duration(3000)
         .attrTween("transform", rotTween)
-        .each("end", function () {
-            //mark question as seen
-            d3.select(".slice:nth-child(" + (picked + 1) + ") path")
-                .attr("fill", "#111");
-            //populate question
-            d3.select("#question h1")
-                .text(data[picked].question);
-            oldrotation = rotation;
+        .each("end", async function () {
+        //mark question as seen
+        d3.select(".slice:nth-child(" + (picked + 1) + ") path")
+            .attr("fill", "#111");
+        //populate question
+        d3.select("#question h1")
+            .text(data[picked].question);
+        oldrotation = rotation;
 
-            /* Get the result value from object "data" */
-            console.log(data[picked].value)
+        /* Get the result value from object "data" */
+        console.log(data[picked].value)
+     
 
-            /* Comment the below line for restrict spin to sngle time */
-            container.on("click", spin);
-        });
-}
+        // Updated Start H.E ---------------
+
+// Fetch the movie description from OMDb API
+try {
+    var selectedMovieTitle = data[picked].label; 
+    var description = await getPlot(selectedMovieTitle);
+
+    // Display the movie description
+    console.log(description);
+
+    d3.select("#question h1")
+        .text(description);
+} catch (error) {
+    // Handle the error
+    console.error('Error fetching movie description:', error);
+
+    console.log('Selected element:', d3.select("#question h1"));
+d3.select("#question h1").text(description);
+
+}        
+        // Updated End H.E ---------------
+
+        /* Comment the below line for restrict spin to sngle time */
+        container.on("click", spin);
+})}
+
+
 //make arrow
 svg.append("g")
     .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h / 2) + padding.top) + ")")
@@ -141,6 +187,8 @@ function getRandomNumbers() {
         for (var i = 0; i < 1000; i++) {
             array[i] = Math.floor(Math.random() * 100000) + 1;
         }
-    }
+
+    } 
     return array;
+
 }
