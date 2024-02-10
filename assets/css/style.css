@@ -1,173 +1,185 @@
 :root {
-  background-color: #B19470;
-  /* Fonts are not working */
+  background-color: #b19470;
 }
-
-*{
-  font-family: 'Labrada', serif;
-  font-family: 'Rozha One', serif;
-  font-family: 'Sixtyfour', sans-serif;
-}
-
 
 /* css for the spinner */
-text{
-  font-family:"Labrada";
-  font-size:11px;
-  pointer-events:none;
+text {
+  font-family: "Labrada";
+  font-size: 15px;
+  pointer-events: none;
 }
-#chart{
-  position:absolute;
-  width:500px;
-  height:500px;
-  background-color: #F8FAE5;
-  top:0;
-  left:0;
+#chart {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: #f8fae5;
+  top: 0;
+  left: 0;
 }
-
 
 #movie-title h1 {
-font-size: 50px;
-Color:Pink;
-font-weight: bold;
-font-family: "Labrada";
-position: absolute;
-top: 10%;
-left: 60%;
-transform: translate(-50%, -50%);
-width: 100%; /* Ensure the title takes full width */
-text-align: center; /* Center the text horizontally */
+  font-size: 50px;
+  color: rgb(219, 130, 70);
+  font-weight: bold;
+  font-family: "Labrada";
+  position: absolute;
+  top: 10%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
 }
 
-
-
 #description h1 {
-font-size: 30px;
-color:pink;
-font-weight: bold;
-font-family: "Labrada";
-position: relative; 
-margin-top: -15%; 
-margin-left: 40%; 
-width: 50%; 
+  font-size: 30px;
+  color: rgb(250, 175, 124);
+  font-weight: bold;
+  font-family: "Labrada";
+  position: relative;
+  margin-top: -15%;
+  margin-left: 40%;
+  width: 50%;
 }
 
 /* css for the spinner end */
 
-
-
+/* css for main genre selection page */
 .custom-hero {
-background-color: #F8FAE5;
-align-items: center;
+  background-color: #f8fae5;
+  align-items: center;
 }
 
-.custom-title{
-justify-content: center;
-font-size: 90px;
+.custom-title {
+  font-family: "Rozha One", serif;
+  justify-content: center;
+  font-size: 90px;
 }
 
 .custom-subtitle-container {
-    display: flex;
-    align-items: center;
-    justify-content:flex-end;
-    height: 100px;
+  font-family: "Rozha One", serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
 }
 
-
-.custom-subtitle{
-    font-size: 50px;
-} 
-
+.custom-subtitle {
+  font-size: 50px;
+}
 
 .notification.is-primary {
-    background-color: #2B2A4C;
-    color: #e9e2e2; 
-  }
-
-
-button {
-    width: 100%;
-    margin: 10px;
+  font-family: "Sixtyfour", sans-serif;
+  background-color: #2b2a4c;
+  color: #e9e2e2;
 }
 
+button {
+  width: 100%;
+  margin: 10px;
+}
 
 #icons {
-    background-color: #B19470 !important;
-    font-size: 30px;
-    padding: 10px; 
+  background-color: #b19470 !important;
+  font-size: 30px;
+  padding: 10px;
 }
 
 #icons .button i {
-    margin-right: 15px; /* Adjust the margin as needed */
-  }
-
-
+  margin-right: 15px;
+}
 
 /* Background Color for buttons */
-#icons .comedy-button { background-color: #43766C; }
-#icons .family-button { background-color:#43766C ; }
-#icons .action-button { background-color: #43766C; }
-#icons .romantic-button { background-color: #43766C;}
-#icons .doc-button { background-color: #43766C; }
-#icons .sci-button { background-color: #43766C; }
-#icons .horror-button { background-color: #43766C; }
-#icons .musical-button { background-color: #43766C; }
-#icons .mystery-button { background-color: #43766C; }
-#icons .fantasy-button { background-color: #43766C; }
+#icons .comedy-button {
+  background-color: #43766c;
+}
+#icons .family-button {
+  background-color: #43766c;
+}
+#icons .action-button {
+  background-color: #43766c;
+}
+#icons .romantic-button {
+  background-color: #43766c;
+}
+#icons .doc-button {
+  background-color: #43766c;
+}
+#icons .sci-button {
+  background-color: #43766c;
+}
+#icons .horror-button {
+  background-color: #43766c;
+}
+#icons .musical-button {
+  background-color: #43766c;
+}
+#icons .mystery-button {
+  background-color: #43766c;
+}
+#icons .fantasy-button {
+  background-color: #43766c;
+}
 
+/* These are for the google icons that needed to be a different color. H.E */
+.family-button i.material-symbols-outlined {
+  color: #000000;
+}
 
-  /* These are for the google icons that needed to be a different color. H.E */
-  .family-button i.material-symbols-outlined {
-    color: #000000; 
-  }
+.action-button i.material-symbols-outlined {
+  color: #000000;
+}
 
-
-  .action-button i.material-symbols-outlined {
-    color:#000000;
-  }
-
-  
-  .doc-button i.material-symbols-outlined {
-    color:#000000;
-  }
+.doc-button i.material-symbols-outlined {
+  color: #000000;
+}
 
 /* Responsive Styles */
+
+/* 600 px page size */
 @media only screen and (max-width: 600px) {
   #description {
     width: 100%;
     left: 0;
   }
 
-  #description h1 {
-    font-size: 16px;
-  }
-
   /* Spinner Styles for smaller screens */
+  #modal-spinner{
+    position: relative;
+
+  }
   text {
-    font-size: 10px; /* Adjust font size for smaller screens */
+    font-size: 10px;
   }
 
   #chart {
-    width: 50%; /* Adjust width for smaller screens */
+    width: 50%;
   }
 
+  #movie-title h1 {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    height: auto;
+    text-align: end;
+    margin-top: 50px;
+  }
+
+  #description h1 {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  
+  
+
+  /* 400 px page size */
   @media only screen and (max-width: 400px) {
-    #description {
-      width: 90%;
-      left: 0;
-    }
-  
-    #description h1 {
-      font-size: 10px;
-    }
-  
-    /* Spinner Styles for smaller screens */
-    text {
-      font-size: 14px;
-    }
-  
-    #chart {
-      width: 100%; 
-    }
   }
 }
