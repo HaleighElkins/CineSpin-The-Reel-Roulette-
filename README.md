@@ -10,7 +10,7 @@ GIVEN the random selection of movies in that genre, WHEN I click on the wheel to
 
 
 ## Deployment 
-Live URL:
+Live URL: https://haleighelkins.github.io/CineSpin-The-Reel-Roulette-/
 <img width="950" alt="Screenshot 2024-02-12 192740" src="https://github.com/HaleighElkins/Portfolio/assets/152942336/5f8acfc4-b0a7-4d49-9b91-3e34fe164064">
 
 <img width="951" alt="Screenshot 2024-02-12 192757" src="https://github.com/HaleighElkins/Portfolio/assets/152942336/b419a6ab-e9d4-4a98-bef5-de8a60034e49">
