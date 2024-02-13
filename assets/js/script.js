@@ -20,9 +20,11 @@ async function getMovies() {
   var pageNumber = Math.floor(Math.random() * (10 - 1)+1);
   var response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=' + pageNumber + '&sort_by=popularity.desc&with_genres='+ userChoiceId, options);
   movies = await response.json();
-  console.log(movies);
-  console.log(movies.results[0].id)
   pushSpinner();
+  //removes previous text from the spinner before appending new text
+  var textElements = arcs.selectAll("text");
+  textElements.remove();
+  //adds text from data object to the spinner
   arcs.append("text").attr("transform", function (d) {
     d.innerRadius = 0;
     d.outerRadius = r;
@@ -37,11 +39,10 @@ async function getMovies() {
 
 //function to push movie data into data variable
 function pushSpinner() {
-for (let i=0; i<10; i++){
-  data[i].label = (movies.results[i].title);
-  data[i].question = (movies.results[i].overview);
-}
-console.log(data);
+  for (let i=0; i<10; i++){
+    data[i].label = (movies.results[i].title);
+    data[i].question = (movies.results[i].overview);
+  };
 }
 
 

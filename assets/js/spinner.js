@@ -109,6 +109,13 @@ function spin(d) {
 
     picked = Math.round(data.length - (rotation % 360) / ps);
     picked = picked >= data.length ? (picked % data.length) : picked;
+    //added this back in to prevent the spinner from landing on a slice twice WK
+    if(oldpick.indexOf(picked) !== -1){
+        d3.select(this).call(spin);
+        return;
+    } else {
+        oldpick.push(picked);
+    }
 
     rotation += 90 - Math.round(ps / 2);
 

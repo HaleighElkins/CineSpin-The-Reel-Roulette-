@@ -1,6 +1,14 @@
 :root {
-  background-color: #b19470;
+  background-color: #B19470;
+  /* Fonts are not working */
 }
+
+*{
+  font-family: 'Labrada', serif;
+  font-family: 'Rozha One', serif;
+  font-family: 'Sixtyfour', sans-serif;
+}
+
 
 /* css for the spinner */
 text {
