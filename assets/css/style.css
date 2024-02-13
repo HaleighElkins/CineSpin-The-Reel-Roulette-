@@ -1,14 +1,5 @@
 :root {
-  background-color: #B19470;
-  /* Fonts are not working */
-}
-
-*{
-  font-family: 'Labrada', serif;
-  font-family: 'Rozha One', serif;
-  font-family: 'Sixtyfour', sans-serif;
-}
-
+  background-color:#F7B9A1;
 
 /* css for the spinner */
 text {
@@ -53,7 +44,7 @@ text {
 
 /* css for main genre selection page */
 .custom-hero {
-  background-color: #f8fae5;
+  background-color: #FFCE6D;
   align-items: center;
 }
 
@@ -87,7 +78,7 @@ button {
 }
 
 #icons {
-  background-color: #b19470 !important;
+  background-color: #7CC1C6 !important;
   font-size: 30px;
   padding: 10px;
 }
@@ -98,34 +89,34 @@ button {
 
 /* Background Color for buttons */
 #icons .comedy-button {
-  background-color: #43766c;
+  background-color: #d37f65;
 }
 #icons .family-button {
-  background-color: #43766c;
+  background-color: #DA9E87;
 }
 #icons .action-button {
   background-color: #43766c;
 }
 #icons .romantic-button {
-  background-color: #43766c;
+  background-color: #d37f65;
 }
 #icons .doc-button {
-  background-color: #43766c;
+  background-color: #DA9E87;
 }
 #icons .sci-button {
   background-color: #43766c;
 }
 #icons .horror-button {
-  background-color: #43766c;
+  background-color: #d37f65;
 }
 #icons .musical-button {
-  background-color: #43766c;
+  background-color: #DA9E87;
 }
 #icons .mystery-button {
   background-color: #43766c;
 }
 #icons .fantasy-button {
-  background-color: #43766c;
+  background-color: #d37f65;
 }
 
 /* These are for the google icons that needed to be a different color. H.E */
@@ -144,15 +135,16 @@ button {
 /* Responsive Styles */
 
 /* 600 px page size */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 350px) {
   #description {
     width: 100%;
     left: 0;
   }
 
   /* Spinner Styles for smaller screens */
-  #modal-spinner{
+  /* #modal-spinner{
     position: relative;
+    display: block;
 
   }
   text {
@@ -160,7 +152,8 @@ button {
   }
 
   #chart {
-    width: 50%;
+    width: 100%;
+    height:auto;
   }
 
   #movie-title h1 {
@@ -171,10 +164,10 @@ button {
     width: 100%;
     height: auto;
     text-align: end;
-    margin-top: 50px;
+    margin-top: 20px;
   }
 
-  #description h1 {
+  /* #description h1 {
     position: relative;
     top: auto;
     left: auto;
@@ -182,12 +175,32 @@ button {
     width: 100%;
     text-align: center;
     margin-top: 20px;
+  } */
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  #description h1,
+  #movie-title h1 {
+    position: static; /* Change to static to allow natural flow */
+    width: 100%;
+    text-align: center;
+    margin-top: 20px; /* Adjust the margin as needed */
   }
 
-  
-  
+  #chart {
+    width: 100%;
+    height: auto;
+  }
 
-  /* 400 px page size */
-  @media only screen and (max-width: 400px) {
+  #modal-spinner {
+    position: relative;
+    display: block; /* Ensure the spinner is displayed */
+  }
+
+  text {
+    font-size: 10px;
   }
 }
+
+  
+}}
